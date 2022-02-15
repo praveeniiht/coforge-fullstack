@@ -10,4 +10,6 @@ public interface PostService {
 	public List<CommentsDto> findCommentsByPostId(int postId);
 	
 	public String findAuthorByPostId(int postId);
+	
+
 }

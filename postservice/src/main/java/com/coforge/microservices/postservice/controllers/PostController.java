@@ -1,6 +1,5 @@
 package com.coforge.microservices.postservice.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.coforge.microservices.postservice.model.CommentsDto;
 import com.coforge.microservices.postservice.model.Post;
-import com.coforge.microservices.postservice.service.PostService;
+import com.coforge.microservices.postservice.service.PostServiceImpl;
 
 @RestController
 @RequestMapping("/posts")
 public class PostController {
 
 	@Autowired
-	PostService service;
+	PostServiceImpl service;
 
 	@GetMapping("/all")
 	public List<Post> findAllPosts() {
@@ -39,5 +38,10 @@ public class PostController {
 			public String findAuthor(@PathVariable("postId") int postId){
 				return service.findAuthorByPostId(postId);
 			}
+	
+	@GetMapping("/comments/port")
+	public String getCommentAppPort() {
+		return service.getCommentsAppPort();
+	}
 
 }

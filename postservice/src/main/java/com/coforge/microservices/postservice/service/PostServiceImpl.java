@@ -17,8 +17,10 @@ public class PostServiceImpl implements PostService{
 	PostRepo repo;
 	
 	
+	
+	
 	@Autowired
-	RestTemplate template;
+	PostFeignProxy template;
 
 	@Override
 	public List<Post> findAllPosts() {
@@ -32,8 +34,8 @@ public class PostServiceImpl implements PostService{
 	public List<CommentsDto> findCommentsByPostId(int postId) {
 		// TODO Auto-generated method stub
 		
-		List<CommentsDto> comments = (List<CommentsDto>) template
-				.getForObject("http://localhost:9900/comments/pid/"+postId, List.class);
+		
+		List<CommentsDto> comments = template.findCommentsByPid(postId);
 		return comments;
 	}
 
@@ -46,6 +48,9 @@ public class PostServiceImpl implements PostService{
 	}
 
 
+	public String getCommentsAppPort() {
+		return template.getCommentsPort();
+	}
 
 	
 
