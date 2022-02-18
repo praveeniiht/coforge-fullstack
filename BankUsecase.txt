@@ -1,0 +1,51 @@
+Banking Application
+-------------------
+1. Create two microservices 
+     1. ManagerService
+     2. CustomerService
+
+2. CustomerServices application should allow 
+   2.1 customers to  register themselves
+   2.2 customers to make transactions like withdraw and
+       deposit
+   2.3 customers to check their balance
+
+Dependencies: Web,Security,Spring Data Jpa,Client Discovery,
+MySQL Driver,NetFlix Open Feign
+Entity Class: Customer(cid,cname,address)
+/withdraw/1000
+deposit/3000
+/balance
+
+ 
+3. ManagerServices application should allow
+    3.1 To delete the customer account
+    3.2 To display all the customers info
+    3.3 To create an account type
+    3.4 To display all transactional detaials based on transaction
+        type
+/transactions/deposit
+
+
+Dependencies: Web,Security,Spring Data Jpa,Client Discovery,
+MySQL Driver,NetFlix Open Feign  
+Entity Class: Accounts(accttype,minBalance,roi)
+              CustomerAccounts(accno,cid,accttype,balance)  
+               Trasactions(tid,cid,ttype,amount,date)
+
+
+1. Naming server for service registration and discovery.
+2. Load Balancing for the ManagerService
+3. Cloud Config for both the services
+4. Circuit breaker implementation using Resilience.
+5. Spring Security for Authentication.
+
+6. Dockerize both the services and push them into the 
+   docker hub.
+
+
+                 
+
+
+
+
